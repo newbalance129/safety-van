@@ -1,0 +1,33 @@
+<?php
+
+namespace App\Repositories;
+
+use App\DriverDetail;
+
+public class DriverRepository{
+
+	    public function driverAdd($driverID,$dFname,$dLname,$gender,$bType,$dob){ // รับเป็น array
+        $data = array(
+            'driverID' => $driverID,
+            'dFname'=>$dFname,
+            'dLname'=>$dLname,
+            'gender'=>$gender,
+            'bType'=>$bType,
+            'dob'=>$dob,
+            
+        );
+        try{
+          $result = DriverDetail::create($data);
+       
+            return true;
+        }catch(Exception $e){
+         //return $e;
+         
+         echo ($e);
+        }
+    }
+    
+
+}
+
+?>

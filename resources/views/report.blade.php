@@ -72,25 +72,26 @@
                     <div class="col-lg-6">
                              
                         <div class="panel-body">
-                            <form action="{{url('/update')}}" method="get">
-
+                            {!! Form::open(['url' => 'submitreport','files'=> false,'method'=>'post']) !!}
+                            <div class="form-group" style=> 
+                                <div class="form-group">
+                                    <label>ID</label><span style="color: red">*</span>        
+                                </div>
                                 <div class="form-group">
                                     <label>License Plate</label><span style="color: red">*</span>
-                                    <br><input type="text" name="report" value="<?php echo $re; ?>" class="form-control" readonly>
+                                    <br><input type="text" name="vanLicense" value="<?php echo $re; ?>" class="form-control" readonly>
                                 </div>
-
                                 <div class="form-group">
-                                    <label>Problem</label><span style="color: red">*</span>
-                                    <br><input type="checkbox" name="" value=""> Impolite Driver
-                                    <br><input type="checkbox" name="" value=""> Speed Over Limit
-                                    <br><input type="checkbox" name="" value=""> Drive Out of Way
-                                    <br><input type="checkbox" name="" value=""> Others...
-                                    <input type="text" name="" value=""><br><br>
+                                    
+                                    <label>Problem</label><span style="color: red">*</span> <br>                                  
+                                        <input type="checkbox" id="problem" name="problem[]" value="ขับรถไม่สุภาพ">ขับรถไม่สุภาพ<br>
+                                        <input type="checkbox" id="problem" name="problem[]" value="ขับรถออกนอกเส้นทาง">ขับรถออกนอกเส้นทาง<br>
+                                        <input type="checkbox" id="problem" name="problem[]" value="ขับเกินความเร็วที่กำหนด"> ขับเกินความเร็วที่กำหนด<br>
+                                        <input type="checkbox" id="problem" name="problem[]" value="คนขับพูดจาไม่สุภาพ">คนขับพูดจาไม่สุภาพ<br>   
                             <center>
                                 <input type="submit" class="btn btn-lg btn-default" name="Submit" value="Submit" >
-                                <a href="tables"><button type="button" class="btn btn-lg btn-default">Back</button></a>
                             </center>
-                            </form>
+                                 {!! Form::close() !!}
                                                     
                             
                         </div>

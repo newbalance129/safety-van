@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
+                <div class="panel-heading"></div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
                         {{ csrf_field() }}
@@ -18,7 +18,7 @@
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
+                                        <strong>Login{{ $errors->first('email') }}</strong>
                                     </span>
                                 @endif
                             </div>

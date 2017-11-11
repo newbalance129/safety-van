@@ -43,7 +43,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index">Administrator</a>
+                <a class="navbar-brand" href="tables">Administrator</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -54,12 +54,8 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Admin <b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li>
-                                <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
-                            </li>
+                            
+
                             <li class="divider"></li>
                             <li>
                                 <a href="{{ url('/logout') }}"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
@@ -72,15 +68,12 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Driver <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="demo" class="collapse">
-                            <li>
-                                <a href="tables">Driver Detail</a>
-                            </li>
-                            <li>
-                                <a href="forms">New Driver</a>
-                            </li>
-                        </ul>
+                        
+                         <a href="tables"><i class="fa fa-road"></i> Driver</a>                
+                         <a href="reportvan"><i class="fa fa-users"></i> Report</a>
+                         <a href="ViewPassenger"><i class="fa fa-users"></i> Passenger</a>
+                         <a href="way"><i class="fa fa-road"></i> Way</a>                
+                         <a href="mm"><i class="fa fa-map-marker"></i> Map</a> 
                     </li>
                 </ul>
             </div>
@@ -89,7 +82,7 @@
 
         <div id="page-wrapper">
 
-            <div class="container-fluid">
+            <div class="container-fluid" style="height:2000px">
 
                 <!-- Page Heading -->
                 <div class="row">
@@ -114,7 +107,7 @@
                             <div class="form-group">
                                 <?= Form::label('dIdCard','National ID Card'); ?><span style="color: red">*</span>
 
-                                <?= Form::number('dIdCard',null,['class' => 'form-control', 'placeholder' => 'ID']); ?>
+                                <?= Form::number('dIdCard',null,['class' => 'form-control', 'placeholder' => 'ID','required']); ?>
                             </div>
                         
                             <div class="form-group">
@@ -125,11 +118,6 @@
                             <div class="form-group">
                                 <?= Form::label('dLName','Lastname'); ?><span style="color: red">*</span>
                                 <?= Form::text('dLName',null,['class' => 'form-control', 'placeholder' => 'นามสกุล','required']); ?>
-                            </div>
-
-                            <div class="form-group">
-                                <?= Form::label('dPicture','Image'); ?>
-                                <input type="file" name="dPicture" >
                             </div>
                        
                             <div class="form-group">
@@ -163,10 +151,6 @@
                     </div>
                 </div>
                         {!! Form::close() !!}
-
-                                            
-                
-                        
 
                     </div>
                 </div>

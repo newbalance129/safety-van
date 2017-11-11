@@ -78,7 +78,7 @@
 
 
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-           <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li>
                         
@@ -101,19 +101,17 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Driver Detail
+                            View Report
                         </h1>
                         <ol class="breadcrumb">
                             <li class="active">
-                                <i class="fa fa-table"></i> Driver Detail
+                                <i class="fa fa-table"></i> View Report
                             </li>
                         </ol>
                     </div>
                 </div>
                 <!-- /.row -->
-                <div margin='right'>
-                    <a href='forms'><button type="button" class="btn btn-default">+ Add</button></a>
-                </div>               
+
                 <div class="row">
                     <div class="col-lg-12">
                         
@@ -128,39 +126,30 @@
                             <table class="table table-bordered table-hover">
                                 <thead>
                                     <tr>
-                                        
-                                        <th><center>Driver ID</center></th>
-                                        <th><center>Name</center></th>
+                                        <th><center>Report ID</center></th>
+                                        <th><center>Licence Number</center></th>
+                                        <th><center>Date</center></th>
                                         <th colspan='3'><center>Menu</center></th>
-                                        @foreach($driver as $d)
+                                        @foreach($report as $r)
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td><center>{{$d->dIdCard}}</center></td>
-                                        <td>{{$d->dFName}} {{$d->dLName}}</td>
                                         <td>
-                                            <center><form action="/blank-page" method="get">
-                                                <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                                <input type="hidden" name="_method" value="detail">
-                                                <input type="hidden" value="{{$d->dIdCard}}" name="_id">
-                                                <input type="submit" class="btn btn-xs btn-info" value="Detail">
+                                            <center>{{$r->reportId}}</center>
+                                        </td>
+                                        <td>
+                                            <center>{{$r->vanLicense}}</center>
+                                        </td>        
+                                        <td>
 
-                                            </form></center>
-                                            <!--<button type="button" class="btn btn-xs btn-warning">Edit</button>
-                                            <button type="button" class="btn btn-xs btn-danger">Delete</button> blank-page?dID={{$d->driverID}}-->
+                                           <center><center>{{$r->created_at}}</center>
                                         </td>
                                         <td>
-                                            <center><form action="/edit" method="get">
-                                                <input type="hidden" name="_id" value="{{$d->dIdCard}}">
-                                                <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                                <input type="hidden" name="_method" value="detail">
-                                                <input type="submit" class="btn btn-xs btn-warning" value="Edit">
-                                            </form>
-                                        </td>
-                                        <td>
-                                            <center><a href="/delete/{{$d['dIdCard']}}" class="btn btn-xs btn-danger btn-delete">Delete</button></center></a>
-                                        </td>
+                                           <center>
+                                                <a href="/problem/{{$r['reportId']}}" class="btn btn-xs btn-info">View</a>
+                                           </center> 
+                                        </td>                                       
                                         @endforeach
                                         
                                     </tr>

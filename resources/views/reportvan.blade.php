@@ -50,7 +50,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index">Administrator</a>
+                <a class="navbar-brand" href="tables">Administrator</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -61,12 +61,12 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Admin <b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li>
+                            <!-- <li>
                                 <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
                             </li>
                             <li>
                                 <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
-                            </li>
+                            </li> -->
                             <li class="divider"></li>
                             <li>
                                 <a href="{{ url('/logout') }}"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
@@ -78,7 +78,7 @@
 
 
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-           <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li>
                         
@@ -95,75 +95,55 @@
 
         <div id="page-wrapper">
 
-            <div class="container-fluid">
+            <div class="container-fluid" style="height:2000px">
 
                 <!-- Page Heading -->
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Driver Detail
+                            รายงานพฤติกรรมของคนรับรถ
                         </h1>
                         <ol class="breadcrumb">
                             <li class="active">
-                                <i class="fa fa-table"></i> Driver Detail
+                                <i class="fa fa-table"></i> Provider
                             </li>
                         </ol>
                     </div>
                 </div>
                 <!-- /.row -->
-                <div margin='right'>
-                    <a href='forms'><button type="button" class="btn btn-default">+ Add</button></a>
-                </div>               
+
                 <div class="row">
                     <div class="col-lg-12">
                         
-                        <div class="form-group input-group">
-                            <form action="{{url('/search')}}" method="get">
-                            <input type="text" class="form-control" name="searched">
-                            <span class="input-group-btn"><button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button></span>
-                            </form>
-                        </div>
+                        
 
                         <div class="table-responsive">
                             <table class="table table-bordered table-hover">
                                 <thead>
                                     <tr>
+                                        <th><center>ทะเบียนรถ</center></th>
                                         
-                                        <th><center>Driver ID</center></th>
-                                        <th><center>Name</center></th>
-                                        <th colspan='3'><center>Menu</center></th>
-                                        @foreach($driver as $d)
+                                        <th><center>พฤติกรรม</center></th>
+                                        <th><center>เวลา</center></th>
+                                        
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td><center>{{$d->dIdCard}}</center></td>
-                                        <td>{{$d->dFName}} {{$d->dLName}}</td>
+                                        @foreach($report as $r)
                                         <td>
-                                            <center><form action="/blank-page" method="get">
-                                                <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                                <input type="hidden" name="_method" value="detail">
-                                                <input type="hidden" value="{{$d->dIdCard}}" name="_id">
-                                                <input type="submit" class="btn btn-xs btn-info" value="Detail">
-
-                                            </form></center>
-                                            <!--<button type="button" class="btn btn-xs btn-warning">Edit</button>
-                                            <button type="button" class="btn btn-xs btn-danger">Delete</button> blank-page?dID={{$d->driverID}}-->
-                                        </td>
+                                            <center>{{$r->vLicense}}</center>
+                                        </td>        
                                         <td>
-                                            <center><form action="/edit" method="get">
-                                                <input type="hidden" name="_id" value="{{$d->dIdCard}}">
-                                                <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                                <input type="hidden" name="_method" value="detail">
-                                                <input type="submit" class="btn btn-xs btn-warning" value="Edit">
-                                            </form>
-                                        </td>
+                                            <center>{{$r->reportProblem}}</center>
+                                        </td> 
                                         <td>
-                                            <center><a href="/delete/{{$d['dIdCard']}}" class="btn btn-xs btn-danger btn-delete">Delete</button></center></a>
-                                        </td>
-                                        @endforeach
-                                        
+                                            <center>{{$r->created_at}}</center>
+                                        </td> 
+                                                                              
+                                                                   
                                     </tr>
+                                    @endforeach  
                                 </tbody>
                             </table>
                         </div>
